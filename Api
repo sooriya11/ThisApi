@@ -1,0 +1,40 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SeleniumExample {
+    public static void main(String[] args) {
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to the website
+        driver.get("https://polygon.io/docs/stocks/get_v3_trades__stockticker");
+
+        // Find the search input element by its name attribute
+        WebElement searchInput = driver.findElement(By.name("q"));
+
+        // Enter the search keyword
+        searchInput.sendKeys("example keyword");
+
+        // Find the search button element by its CSS selector
+        WebElement searchButton = driver.findElement(By.cssSelector("input[type='submit']"));
+
+        // Click the search button
+        searchButton.click();
+
+        // Wait for the search results page to load (for demonstration purposes only)
+        try {
+            Thread.sleep(5000); // Sleep for 5 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Print the title of the search results page
+        System.out.println("Search results page title: " + driver.getTitle());
+
+        // Close the browser
+        driver.quit();
+    }
+}
